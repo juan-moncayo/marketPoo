@@ -7,28 +7,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.marketAplication.domain.dto.ProductDTO;
-import com.example.marketAplication.infraestructure.crud.ProductRepository;
-import com.example.marketAplication.infraestructure.entity.Producto;
-import com.example.marketAplication.infraestructure.mapper.ProductoMapper;
+import com.example.marketAplication.domain.service.ProductService;
 
 import org.springframework.web.bind.annotation.GetMapping;
-
 
 @RestController
 @RequestMapping("/productos")
 public class ProductController {
     
     @Autowired
-    private ProductRepository productRepository;
-
-    @Autowired
-    private ProductoMapper productoMapper;
+    private ProductService productService;
 
     @GetMapping
     public List<ProductDTO> obtenerProductos() {
+        return productService.getAllProducts();
+    }
 
-        List<Producto> producto = productRepository.findAll();
-        return productoMapper.toProductDTOs(producto);
 
        /*  return productRepository.findAll()
             .stream().map(producto -> productoMapper.toProductDTO(producto)).collect(Collectors.toList());
@@ -36,7 +30,4 @@ public class ProductController {
     
                     
                 
-}
-
-
 }
