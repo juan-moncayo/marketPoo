@@ -1,32 +1,19 @@
 package com.example.marketAplication.infraestructure.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
 
 @Entity
 @Table(name = "productos")
 public class Producto {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nombre;
     private String descripcion;
-    private double precio;
-
-    // Constructor vacío
-    public Producto() {
-    }
-
-    // Constructor sin el id
-    public Producto(String nombre, String descripcion, double precio) {
-        this.nombre = nombre;
-        this.descripcion = descripcion;
-        this.precio = precio;
-    }
+    private BigDecimal precio;
+    private Integer stock;
 
     // Getters y Setters
     public Long getId() {
@@ -53,11 +40,20 @@ public class Producto {
         this.descripcion = descripcion;
     }
 
-    public double getPrecio() {
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(double precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
     }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
+    }
 }
+
