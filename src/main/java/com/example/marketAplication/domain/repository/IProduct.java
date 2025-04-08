@@ -9,11 +9,4 @@ public interface IProduct {
     
     List<ProductDTO> getAll();
     
-    Optional<ProductDTO> getById(Long id);
-    
-    ProductDTO save(ProductDTO productDTO);
-    
-    void update(ProductDTO productDTO);
-    
-    void delete(Long id);
 }
