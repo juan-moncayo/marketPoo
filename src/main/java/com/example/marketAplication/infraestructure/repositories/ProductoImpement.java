@@ -20,8 +20,15 @@ public class ProductoImpement implements IProduct {
     @Autowired
     private ProductoMapper productoMapper;
 
+    @Override
     public List<ProductDTO> getAll() {
         List<Producto> productos = productRepository.findAll();
         return productoMapper.toProductDTOs(productos);
+    }
+    
+    @Override
+    public void save(ProductDTO productDTO) {
+        Producto producto = productoMapper.toProducto(productDTO);
+        productRepository.save(producto);
     }
 }
